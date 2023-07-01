@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentorship Program Registration Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Mentorship Program Registration Form</h1>
+  <form action="process.php" method="post">
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email">
+    </div>
+    <div>
+      <label for="fullname">Full name:</label>
+      <input type="text" name="fullname" id="fullname">
+    </div>
+    <div>
+      <label for="phonenumber">Phone number:</label>
+      <input type="tel" name="phonenumber" id="phonenumber">
+    </div>
+    <div>
+      <label for="gender">Gender:</label>
+      <select name="gender" id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div>
+      <label for="dateofbirth">Date of birth:</label>
+      <input type="date" name="dateofbirth" id="dateofbirth">
+    </div>
+    <div>
+      <label for="agecategory">Age category:</label>
+      <select name="agecategory" id="agecategory">
+        <option value="under18">Under 18</option>
+        <option value="18-24">18-24</option>
+        <option value="25-34">25-34</option>
+        <option value="35-44">35-44</option>
+        <option value="45-54">45-54</option>
+        <option value="55-64">55-64</option>
+        <option value="65+">65+</option>
+      </select>
+    </div>
+    <div>
+      <label for="languagespoken">Language spoken:</label>
+      <input type="text" name="languagespoken" id="languagespoken">
+    </div>
+    <div>
+      <label for="currentaddress">Current address:</label>
+      <input type="text" name="currentaddress" id="currentaddress">
+    </div>
+    <div>
+      <label for="permanentaddress">Permanent address:</label>
+      <input type="text" name="permanentaddress" id="permanentaddress">
+    </div>
+    <div>
+      <label for="educationalstatus">Educational status:</label>
+      <select name="educationalstatus" id="educationalstatus">
+        <option value="undergraduate">Undergraduate</option>
+        <option value="graduate">Graduate</option>
+        <option value="postgraduate">Postgraduate</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div>
+      <label for="schoolcollegename">School/college name:</label>
+      <input type="text" name="schoolcollegename" id="schoolcollegename">
+    </div>
+    <div>
+      <label for="programnameandyearofstudying">Program name and year of studying:</label>
+      <input type="text" name="programnameandyearofstudying" id="programnameandyearofstudying">
+    </div>
+    <div>
+      <label for="wheredouseein5years">Where do you see yourself in 5 years?</label>
+      <input type="text" name="wheredouseein5years" id="wheredouseein5years">
+    </div>
+    <div>
+      <label for="whyareyouinterestedinparticipatinginthisprogram">Why are you interested in participating in this program?</label>
+      <input type="text" name="whyareyouinterestedinparticipatinginthisprogram" id="whyareyouinterestedinparticipatinginthisprogram">
+    </div>
+    <div>
+      <label for="whatareyourexpectationsfromthisprogram">What are your expectations from this program?</label>
+      <input type="text" name="whatareyourexpectationsfromthisprogram" id="whatareyourexpectationsfromthisprogram">
+    </div>
+    <div>
+      <label for="howwillyoucontributetothisprogram">How will you contribute to this program?</label>
+      <input type="text" name="howwillyoucontributetothisprogram" id="howwillyoucontributetothisprogram">
+    </div>
+    <div>
+      <label for="anyotherinformationyouwouldliketoshare">Any other information you would like to share?</label>
+      <input type="text" name="anyotherinformationyouwouldliketoshare" id="anyotherinformationyouwouldliketoshare">
+    </div>
+    <div>
+      <input type="submit" value="Submit">
+    </div>
+  </form>
