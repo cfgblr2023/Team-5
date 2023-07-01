@@ -1,0 +1,238 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Progress Tracker - Area Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    canvas {
+      max-width: 400px;
+      margin-bottom: 20px;
+    }
+    .progress-tracker {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+    }
+    .progress-tracker li {
+      flex: 1;
+      text-align: center;
+    }
+    .progress-tracker li.active {
+      font-weight: bold;
+      color: blue;
+    }
+    .progress-tracker li.completed {
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="progress-chart"></canvas>
+  
+  <ul class="progress-tracker">
+    <li class="completed">Step 1</li>
+    <li class="active">Step 2</li>
+    <li>Step 3</li>
+    <li>Step 4</li>
+    <li>Step 5</li>
+  </ul>
+
+  <script>
+    // JavaScript to handle progress tracking with area charts
+
+    // Get the canvas element
+    const progressChartCanvas = document.getElementById('progress-chart');
+
+    // Get the progress tracker elements
+    const progressTrackerItems = document.querySelectorAll('.progress-tracker li');
+
+    // Create the progress chart
+    const progressChart = new Chart(progressChartCanvas, {
+      type: 'line',
+      data: {
+        labels: ['Step 1', 'Step 2', 'Step 3', 'Step 4', 'Step 5'],
+        datasets: [{
+          label: 'Progress',
+          data: [1, 2, 0, 0, 0],
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1,
+          fill: 'origin'
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 5,
+            ticks: {
+              stepSize: 1
+            }
+          }
+        }
+      }
+    });
+
+    // Update the progress chart based on the current step
+    function updateProgressChart(currentStep) {
+      const data = progressChart.data.datasets[0].data;
+
+      // Reset all steps
+      for (let i = 0; i < data.length; i++) {
+        data[i] = 0;
+        progressTrackerItems[i].classList.remove('completed');
+        progressTrackerItems[i].classList.remove('active');
+      }
+
+      // Mark steps as completed or active based on the current step
+      for (let i = 0; i <= currentStep; i++) {
+        data[i] = i + 1;
+        if (i < currentStep) {
+          progressTrackerItems[i].classList.add('completed');
+        } else if (i === currentStep) {
+          progressTrackerItems[i].classList.add('active');
+        }
+      }
+
+      progressChart.update();
+    }
+
+    // Example usage:
+    // Assume we receive the current step from the backend
+    const currentStepFromBackend = 1;
+
+    // Update the progress chart based on the current step
+    updateProgressChart(currentStepFromBackend);
+  </script>
+</body>
+</html>
+ -->
+
+ <!DOCTYPE html>
+ <html>
+ <head>
+   <title>Progress Tracker - Area Chart</title>
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <style>
+     body, html {
+       margin: 0;
+       padding: 0;
+       height: 100%;
+     }
+     .container {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+       height: 100%;
+       background-color: #f1f1f1;
+       font-family: Arial, sans-serif;
+     }
+     canvas {
+       max-width: 600px;
+       width: 100%;
+       height: 100%;
+       max-height: 400px;
+       border-radius: 8px;
+       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+     }
+     .progress-tracker {
+       list-style: none;
+       padding: 0;
+       display: flex;
+       justify-content: space-between;
+     }
+     .progress-tracker li {
+       flex: 1;
+       text-align: center;
+     }
+     .progress-tracker li.active {
+       font-weight: bold;
+       color: blue;
+     }
+     .progress-tracker li.completed {
+       font-weight: bold;
+       color: green;
+     }
+   </style>
+ </head>
+ <body>
+    <h1 align="center">Progress Tracker</h1>
+   <div class="container">
+     <canvas id="progress-chart"></canvas>
+   </div>
+ 
+   <script>
+     // JavaScript to handle progress tracking with area charts
+ 
+     // Get the canvas element
+     const progressChartCanvas = document.getElementById('progress-chart');
+ 
+     // Get the progress tracker elements
+     const progressTrackerItems = document.querySelectorAll('.progress-tracker li');
+ 
+     // Create the progress chart
+     const progressChart = new Chart(progressChartCanvas, {
+       type: 'line',
+       data: {
+         labels: ['Session 1', 'Session 2', 'Session 3', 'Session 4', 'Session 5'],
+         datasets: [{
+           label: 'Progress',
+           data: [1, 2, 0, 0, 0],
+           backgroundColor: 'rgba(54, 162, 235, 0.2)',
+           borderColor: 'rgba(54, 162, 235, 1)',
+           borderWidth: 1,
+           fill: 'origin'
+         }]
+       },
+       options: {
+         responsive: true,
+         scales: {
+           y: {
+             beginAtZero: true,
+             max: 5,
+             ticks: {
+               stepSize: 1
+             }
+           }
+         }
+       }
+     });
+ 
+     // Update the progress chart based on the current step
+     function updateProgressChart(currentStep) {
+       const data = progressChart.data.datasets[0].data;
+ 
+       // Reset all steps
+       for (let i = 0; i < data.length; i++) {
+         data[i] = 0;
+         progressTrackerItems[i].classList.remove('completed');
+         progressTrackerItems[i].classList.remove('active');
+       }
+ 
+       // Mark steps as completed or active based on the current step
+       for (let i = 0; i <= currentStep; i++) {
+         data[i] = i + 1;
+         if (i < currentStep) {
+           progressTrackerItems[i].classList.add('completed');
+         } else if (i === currentStep) {
+           progressTrackerItems[i].classList.add('active');
+         }
+       }
+ 
+       progressChart.update();
+     }
+ 
+     // Example usage:
+     // Assume we receive the current step from the backend
+     const currentStepFromBackend = 1;
+ 
+     // Update the progress chart based on the current step
+     updateProgressChart(currentStepFromBackend);
+   </script>
+ </body>
+ </html>
+ 
