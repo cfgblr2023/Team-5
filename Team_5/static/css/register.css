@@ -89,7 +89,7 @@ display-flex, .display-flex, .display-flex-center {
     line-height: 1.8;
     color: #222;
     font-weight: 400;
-    background-image: url("./../../../assets/images/homebg.jpeg");
+    background-image: url("./../../../../static/images/homebg.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     -moz-background-size: cover;
@@ -111,7 +111,7 @@ display-flex, .display-flex, .display-flex-center {
  }
  .image{
     width: 400px;
-    background-image: url("./../../../assets/images/abtbg.jpeg");
+    background-image: url("./../../../../static/images/abtbg.jpeg");
     background-position: 60%;
     background-size: cover;
     border-radius: 0 10px 10px 0;
