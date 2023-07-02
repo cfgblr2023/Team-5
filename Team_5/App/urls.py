@@ -1,9 +1,12 @@
 
 from django.contrib import admin
-from Home import views
+from App import views
+from django.urls import path
 
 urlpatterns = [
-    path('/', views.home,name="home"),
+    path('about/', views.about,name="home"),
+    path('register/mentor/',views.register_mentee,name="regsiter_mentee"),
+
  
     
 ]
