@@ -7,3 +7,7 @@ Admin gets to see the overall working and gets to add,update and delete the deta
 Thus, its a platform which can be used for coordinating between mentors, mentees and the admin with a focus on cost-effective strategies and basic technology utilization.
 
 ![logo](https://github.com/cfgblr2023/Team-5/assets/91196500/5b5342a8-8ded-4a4e-92bf-c9eed4b63c00)
+
+Tech Stacks Used
+![Screenshot (5)](https://github.com/cfgblr2023/Team-5/assets/91196500/897345ac-a855-4941-937b-5f6f675a1e34)
+
