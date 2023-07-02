@@ -680,6 +680,7 @@
   //--//-->   Input Navigation
   ======================================*/
   #input-nav{
+    display: none;
     margin-top: 110px;
     margin-bottom: 25px;
     padding: 1.1rem;
@@ -1213,18 +1214,10 @@
     padding-top: 15px;
     border-radius: 0.2em;
     /* background: #f3f2f2; */
-    text-align: center;
+    
   }
   .title-1 i{
     margin-right: 8px;
-  }
-  .title-line {
-    width: 30px;
-    height: 5px;
-    background-color: #495bd6;
-    border-radius: 2em;
-    margin: 10px auto;
-    /* margin-bottom: 20px; */
   }
   .title-info{
     font-weight: 400;

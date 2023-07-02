@@ -9,19 +9,14 @@
 
 <div id="side-nav">
 	<div class="main-menu">
-		<div class="top-side text-center py-4" style="background-image: url({% static 'img/dotted.jpg' %});">
+		<div class="top-side text-center py-4" style="background-color: white;">
 			<div class="desktop-hide">
 				<div class="toggle-btn" onclick="toggleSidebar()">
 					<i class="fas fa-times"></i>
 				</div>
 			</div>
-			<img src="{% static 'img/logo.png' %}" width="150px" alt="Logo Django LMS">
-			<p class="text-orange">
-				<mark>
-					<i class="far fa-hand-point-right"></i>
-					{{ request.user.get_user_role }}
-				</mark>
-			</p>
+			<img src="{% static 'img/Logo.png' %}" width="200px" alt="Logo Django LMS">
+			
 		</div>
 		{% url 'home' as hom %} {% url 'dashboard' as dash %} {% url 'profile' as prof %}
 		{% url 'lecturer_list' as lec %}
@@ -31,23 +26,18 @@
 		{% url 'course_registration' as cr %} {% url 'edit_profile' as ep %} {% url 'change_password' as cp %}
 		{% url 'quiz_progress' as qpr %} {% url 'quiz_marking' as qce %} {% url 'user_course_list' as ucl %}
 		{% url 'admin_panel' as admin_p %}
-		<ul>
+		<ul style="background-color: rgb(252, 244, 207);">
 			{% if request.user.is_superuser %}
 			<li class="{% if request.path == dash %}active{% endif %}">
-				<a href="{% url 'dashboard' %}"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+				<a href="{% url 'dashboard' %}" ><i class="fas fa-tachometer-alt"></i>Dashboard</a>
 			</li>
 			{% endif %}
 			<li class="{% if request.path == hom %}active{% endif %}">
 				<a href="{% url 'home' %}"><i class="fas fa-home"></i>Home</a>
 			</li>
-			<li class="{% if request.path == prof %}active{% endif %}">
-				<a href="{% url 'profile' %}"><i class="fas fa-user"></i>Profile</a>
-			</li>
-
+			
 			{% if request.user.is_superuser %}
-			<li class="{% if request.path == admin_p %}active{% endif %}">
-				<a href="{% url 'admin_panel' %}"><i class="fas fa-user-tie"></i>Admin Panel</a>
-			</li>
+			
 			<li class="{% if request.path == lec %}active{% endif %}">
 				<a href="{% url 'lecturer_list' %}"><i class="fas fa-chalkboard-teacher"></i>Lecturers</a>
 			</li>
@@ -66,11 +56,7 @@
 				<a href="{% url 'programs' %}"><i class="fas fa-book-open"></i>Programs & Courses</a>
 			</li>
 
-			{% if request.user.is_superuser or request.user.is_lecturer %}
-			<li class="{% if request.path == qce %}active{% endif %}">
-				<a href="{% url 'quiz_marking' %}"><i class="fas fa-check-double"></i>Complete Exams</a>
-			</li>
-			{% endif %}
+			
 
 			{% if request.user.is_superuser %}
 			<li class="{% if request.path == qpr %}active{% endif %}">
@@ -82,9 +68,6 @@
 			<li class="{% if request.path == sess %}active{% endif %}">
 				<a href="{% url 'session_list' %}"><i class="fas fa-calendar-week"></i>Manage Session</a>
 			</li>
-			<li class="{% if request.path == sem %}active{% endif %}">
-				<a href="{% url 'semester_list' %}"><i class="fas fa-calendar-alt"></i>Manage Semester</a>
-			</li>
 			{% endif %}
 
 			{% if request.user.is_lecturer %}
@@ -95,16 +78,13 @@
 
 			{% if request.user.is_student %}
 			<li class="{% if request.path == qpr %}active{% endif %}">
-				<a href="{% url 'quiz_progress' %}"><i class="fas fa-record-vinyl"></i>Quiz Progress Rec</a>
+				<a href="{% url 'quiz_progress' %}"><i class="fas fa-record-vinyl"></i>Progress</a>
 			</li>
 			<li class="{% if request.path == vr %}active{% endif %}">
 				<a href="{% url 'grade_results' %}"><i class="fab fa-page4"></i>Grade Results</a>
 			</li>
 			<li class="{% if request.path == ar %}active{% endif %}">
 				<a href="{% url 'ass_results' %}"><i class="fa fa-spell-check"></i>Assesment Results</a>
-			</li>
-			<li class="{% if request.path == cr %}active{% endif %}">
-				<a href="{% url 'course_registration' %}"><i class="fas fa-plus"></i>Add & Drop Course</a>
 			</li>
 			{% endif %}
 			<br />
@@ -118,19 +98,5 @@
 		</ul>
 	</div>
 
-	<footer class="card-footer mt-5 pt-3 pb-5 px-2">
-		<div class="col-12">
-			<p class="small m-0">
-				Read our <a href="#"> Privacy </a> and <a href="#"> Terms of use. </a>
-				<br />Django LMS &copy; <script>document.write(new Date().getFullYear());</script>
-				<br />
-			</p>
-			<p>
-				<a href="https://adilmohak.github.io/adil/" target="_blank">By Adil Mohammed</a>
-			</p>
-			<a href="https://github.com/adilmohak/django-lms" class="btn btn-sm btn-dark mx-auto" target="_blank">
-				⭐️ Star on GitHub
-			</a>
-		</div>
-	</footer>
+	
 </div>

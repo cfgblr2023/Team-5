@@ -5,7 +5,6 @@
 {% block content %}
 
 <div class="container">
-    <div id="input-nav" class="p-2">Home</div>
 
     {% if request.user.is_superuser %}
     <div class="manage-wrap">
@@ -40,7 +39,7 @@
         }
     </style>
 
-    <div class="title-1">News & Events</div>
+    <div class="title-1">News & Announcements</div>
 
     <ul class="col-md-2 ml-auto d-flex">
         <li class="mr-3">
@@ -99,10 +98,6 @@
         {% endfor %}
     </div>
 
-    {% else %}
-    <p>
-        <i class="far fa-frown fa-2x"></i>So empty.
-    </p>
 
     {% endif %}
 

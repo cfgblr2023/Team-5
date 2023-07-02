@@ -5,11 +5,11 @@
 
 <div id="input-nav"><a href="{% url 'home' %}" class="primary1">Home</a> <i>&rsaquo;</i> Session list</div>
 
+
+<div class="title-1" style="margin-right:680px"><i class="fas fa-calendar-week"></i>Session List</div>
 {% if request.user.is_superuser %}
 <a class="add-button" href="{% url 'add_session' %}"><i class="fas fa-plus"></i>Add New Session</a>
 {% endif %}
-
-<div class="title-1"><i class="fas fa-calendar-week"></i>Session List</div>
 <div class="title-line"></div>
 
 {% if messages %}

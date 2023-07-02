@@ -5,88 +5,124 @@
 {% block description %} {% trans "User Progress Page" %} {% endblock %}
 
 {% block content %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <style>
+     body, html {
+       margin: 0;
+       padding: 0;
+       height: 100%;
+     }
+     .container {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+       height: 100%;
+       font-family: Arial, sans-serif;
+     }
+     canvas {
+       max-width: 800px;
+       width: 100%;
+       height: 100%;
+       max-height: 500px;
+       border-radius: 8px;
+       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+     }
+     .progress-tracker {
+       list-style: none;
+       padding: 0;
+       display: flex;
+       justify-content: space-between;
+     }
+     .progress-tracker li {
+       flex: 1;
+       text-align: center;
+     }
+     .progress-tracker li.active {
+       font-weight: bold;
+       color: blue;
+     }
+     .progress-tracker li.completed {
+       font-weight: bold;
+       color: green;
+     }
+   </style>
+ 
 
-<div id="input-nav"><a href="{% url 'home' %}" class="primary1">Home</a> <i>&rsaquo;</i> Progress Page</div>
-
-  {% if cat_scores %}
-
-  <div class="header-title text-center">{% trans "Question Category Scores" %}</div>
-  <div class="title-line"></div>
-
-  <table class="table table-bordered table-striped">
-
-	<thead>
-	  <tr>
-		<th>{% trans "Category" %}</th>
-		<th>{% trans "Correctly answererd" %}</th>
-		<th>{% trans "Incorrect" %}</th>
-		<th>%</th>
-	  </tr>
-	</thead>
-
-	<tbody>
-
-
-	  {% for cat, value in cat_scores.items %}
-	  <tr>
-		<td>{{ cat }}</td>
-		<td>{{ value.0 }}</td>
-		<td>{{ value.1 }}</td>
-		<td>{{ value.2 }}</td>
-	  </tr>
-
-	  {% endfor %}
-
-	</tbody>
-
-  </table>
-
-
-  {% endif %}
-
-  {% if exams %}
-
-  <hr>
-
-  <div class="header-title-xl">{% trans "Previous exam papers" %}</div>
-  <p class="lead text-muted">
-	{% trans "Below are the results of exams that you have sat." %}
-  </p>
-  <div class="info-text bg-danger mb-2">Total complete exams: {{ exams_counter }}</div>
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-
-	<thead>
-	  <tr>
-		<th>#</th>
-		<th>{% trans "Quiz Title" %}</th>
-		<th>{% trans "Score" %}</th>
-		<th>{% trans "Possible Score" %}</th>
-		<th>Out of 100%</th>
-	  </tr>
-	</thead>
-
-	<tbody>
-
-	  {% for exam in exams %}
-
-	  <tr>
-		<td>{{ forloop.counter }}</td>
-		<td>{{ exam.quiz.title }}</td>
-		<td>{{ exam.current_score }}</td>
-		<td>{{ exam.get_max_score }}</td>
-		<td>{{ exam.get_percent_correct }}%</td>
-	  </tr>
-
-	  {% endfor %}
-
-	</tbody>
-
-  </table>
-</div>
-  {% endif %}
-  {% if not cat_scores and not exams %}
- 	<div class="col-12 p-4 text-center"><h3><i class="far fa-frown"></i></h3> No recordes yet. to get a good recorde, try to do some quizzes in your course.</div> 
-  {% endif %}
+    <h1 style="margin-left: 20px;"class="title-1">Progress Tracker : CSE2001</h1>
+	<br>
+	<br>
+   <div class="container">
+     <canvas id="progress-chart"></canvas>
+   </div>
+ 
+   <script>
+     // JavaScript to handle progress tracking with area charts
+ 
+     // Get the canvas element
+     const progressChartCanvas = document.getElementById('progress-chart');
+ 
+     // Get the progress tracker elements
+     const progressTrackerItems = document.querySelectorAll('.progress-tracker li');
+ 
+     // Create the progress chart
+     const progressChart = new Chart(progressChartCanvas, {
+       type: 'line',
+       data: {
+         labels: ['Session 1', 'Session 2', 'Session 3', 'Session 4', 'Session 5',  'Session 6', 'Session 7', 'Session 8'],
+         datasets: [{
+           label: 'Progress',
+           data: [1, 2, 3, 1, 0, 0, 0, 0],
+           backgroundColor: 'rgba(54, 162, 235, 0.2)',
+           borderColor: 'rgba(54, 162, 235, 1)',
+           borderWidth: 1,
+           fill: 'origin'
+         }]
+       },
+       options: {
+         responsive: true,
+         scales: {
+           y: {
+             beginAtZero: true,
+             max: 5,
+             ticks: {
+               stepSize: 1
+             }
+           }
+         }
+       }
+     });
+ 
+     // Update the progress chart based on the current step
+     function updateProgressChart(currentStep) {
+       const data = progressChart.data.datasets[0].data;
+ 
+       // Reset all steps
+       for (let i = 0; i < data.length; i++) {
+         data[i] = 0;
+         progressTrackerItems[i].classList.remove('completed');
+         progressTrackerItems[i].classList.remove('active');
+       }
+ 
+       // Mark steps as completed or active based on the current step
+       for (let i = 0; i <= currentStep; i++) {
+         data[i] = i + 1;
+         if (i < currentStep) {
+           progressTrackerItems[i].classList.add('completed');
+         } else if (i === currentStep) {
+           progressTrackerItems[i].classList.add('active');
+         }
+       }
+ 
+       progressChart.update();
+     }
+ 
+     // Example usage:
+     // Assume we receive the current step from the backend
+     const currentStepFromBackend = 1;
+ 
+     // Update the progress chart based on the current step
+     updateProgressChart(currentStepFromBackend);
+   </script>
 
 {% endblock %}

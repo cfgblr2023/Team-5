@@ -3,13 +3,18 @@
 
 {% block content %}
 
-<div id="input-nav"><a href="{% url 'home' %}" class="primary1">Home</a> <i>&rsaquo;</i> Lecturers</div>
+
+
+
+<div>
+<p class="title-1" style="margin-right: 680px;"><i class="fas fa-chalkboard-teacher"></i>Lecturers List</p>
 
 {% if request.user.is_superuser %}
+<span >
 <a class="add-button" href="{% url 'add_lecturer' %}"><i class="fas fa-plus"></i>Add Lecturer</a>
+</span>
 {% endif %}
-
-<p class="title-1"><i class="fas fa-chalkboard-teacher"></i>Lecturers List</p>
+</div>
 <div class="title-line"></div>
 
 {% if messages %}

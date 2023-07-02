@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<div id="input-nav" class="p-2"><a href="/"> Home </a> Dashboard</div>
+
 
 {% if messages %}
 {% for message in messages %}
@@ -196,53 +196,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-3 mb-3 px-2">
-		<div class="card-count p-3">
-			<h3><i class="fas fa-users bg-light-red"></i></h3>
-			<div class="text-right">
-				Administrators
-				<h2>125</h2>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3 mb-3 px-2">
-		<div class="card-count p-3">
-			<h3><i class="fas fa-users bg-light-red"></i></h3>
-			<div class="text-right">
-				Librarian
-				<h2>300</h2>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3 mb-3 px-2">
-		<div class="card-count p-3">
-			<h3><i class="fas fa-users bg-light-purple"></i></h3>
-			<div class="text-right">
-				Supervisors
-				<h2>660</h2>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3 mb-3 px-2">
-		<div class="card-count p-3">
-			<h3><i class="fas fa-users bg-light-orange"></i></h3>
-			<div class="text-right pl-2">
-				Office Assistance
-				<h2>1,700</h2>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3 mb-3 px-2">
-		<div class="card-count p-3">
-			<h3><i class="fas fa-users bg-light-aqua"></i></h3>
-			<div class="text-right">
-				Others
-				<h2>1,250</h2>
-			</div>
-		</div>
-	</div>
-</div>
-
+	
 <div class="row px-2">
 	<div class="col-md-6 p-2">
 		<div class="chart-wrap">
@@ -305,12 +259,9 @@
 </div>
 <br>
 <div class="bg-white p-3">
-	<h5>School Demographics</h5>
+	
 	<div class="row">
-		<div class="col-md-4">
-			<i class="fas fa-expand-alt"></i>
-			<canvas id="gender"></canvas>
-		</div>
+		
 		<div class="col-md-4">
 			<i class="fas fa-expand-alt"></i>
 			<canvas id="ethnicity"></canvas>
@@ -543,20 +494,6 @@
 			}]
 		};
 
-		var gender = document.getElementById('gender');
-		var chart = new Chart(gender, {
-			type: 'polarArea',
-			data: dataGender,
-			options: {
-				plugins: {
-					title: {
-						display: true,
-						text: 'Students Gender',
-						padding: 20
-					}
-				}
-			}
-		});
 		var ethnicity = document.getElementById('ethnicity');
 		var chart = new Chart(ethnicity, {
 			type: 'polarArea',
